@@ -31,4 +31,13 @@ public class ClassWithDenpendencies {
         message = "modify the message which is returned by denpendency2," + message;
         return message;
     }
+
+    public String returnMessage(int type){
+        if(type == 1){
+            return modifyDenpendency1ReturnMessage();
+        }else if(type == 2) {
+            return modifyDenpendency2ReturnMessage();
+        }
+        return "";
+    }
 }

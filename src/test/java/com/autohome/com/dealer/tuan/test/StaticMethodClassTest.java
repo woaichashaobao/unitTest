@@ -7,6 +7,7 @@ import org.junit.runner.RunWith;
 import org.powermock.api.mockito.PowerMockito;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
+import org.powermock.reflect.Whitebox;
 
 import static org.mockito.Matchers.any;
 import static org.powermock.api.mockito.PowerMockito.when;
@@ -42,5 +43,20 @@ public class StaticMethodClassTest extends TestCase {
         String expectedMessage = "static method calls privte static method";
         String message = StaticMethodClass.publicStaticMethodCallsPrivateStaticMethod();
         Assert.assertEquals(expectedMessage,message);
+    }
+
+    @Test
+    public void testPrivateStaticMethod(){
+        PowerMockito.mockStatic(StaticMethodClass.class);
+        String message = "test message";
+        String expectedReturnMessage = "test message, handled by private static method";
+        try {
+            String returnMessage = Whitebox.<String>invokeMethod(StaticMethodClass.class,"privateStaticMethodWithParam",message);
+            Assert.assertEquals(expectedReturnMessage,returnMessage);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
     }
 }

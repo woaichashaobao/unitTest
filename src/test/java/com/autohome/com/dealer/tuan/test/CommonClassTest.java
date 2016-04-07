@@ -69,4 +69,33 @@ public class CommonClassTest extends TestCase {
         }
         Assert.assertEquals(expectedMessage,message);
     }
+
+    /**
+     * 测试私有final方法
+     */
+    public void testPrivateFinalMethod(){
+        String message = "test message";
+        String expectedMessage = "private fianl method is tested,the param is test message";
+        try {
+            String returnMessage = Whitebox.<String>invokeMethod(commonClass,"privateFinalMethodWithParam",message);
+            System.out.println(returnMessage);
+            Assert.assertEquals(expectedMessage,returnMessage);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * 测试私有final方法
+     */
+    public void testPublicFinalMethod(){
+        String message = "test message";
+        String expectedMessage = "public final method is tested,the param is test message";
+        try {
+            String returnMessage = commonClass.publicFinalMehthodWithParam(message);
+            Assert.assertEquals(expectedMessage,returnMessage);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

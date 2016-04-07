@@ -43,4 +43,22 @@ public class CommonClass {
         return message;
     }
 
+    /**
+     * 私有final方法带参
+     * @param message
+     * @return
+     */
+    private final String privateFinalMethodWithParam(String message){
+        return "private final method is tested,the param is " + message;
+    }
+
+    /**
+     * 公有final方法
+     * @param message
+     * @return
+     */
+    public final String publicFinalMehthodWithParam(String message){
+        return "public final method is tested,the param is " + message;
+    }
+
 }

@@ -9,4 +9,5 @@ public class Denpendency2 {
         String message = "denpendency2 return a message";
         return message;
     }
+
 }

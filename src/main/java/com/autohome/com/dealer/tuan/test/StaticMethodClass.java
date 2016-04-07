@@ -38,8 +38,9 @@ public final class StaticMethodClass {
      * Ë½ÓÐ¾²Ì¬·½·¨
      * @param message
      */
-    private static void privateStaticMethodWithParam(String message){
+    private static String privateStaticMethodWithParam(String message){
         message = message + ", handled by private static method";
+        return message;
     }
 
 }

@@ -39,10 +39,11 @@ public class ClassWithDenpendenciesTest extends TestCase {
      * @throws Exception
      */
     public void testDenpendency1PrintMessage() throws Exception {
+        int type = 1;
         //当被mock的对象某个方法被调用时，指定返回值
         when(denpendency1.returnMessage()).thenReturn("denpendency1 return message");
         String expectedMessge = "modify the message which is returned by denpendency1,denpendency1 return message";
-        String message = classWithDenpendencies.modifyDenpendency1ReturnMessage();
+        String message = classWithDenpendencies.returnMessage(type);
         //验证变量的方法是否被调用和调用次数
         verify(denpendency1,times(1)).returnMessage();
         verify(denpendency2,never()).returnMessage();
@@ -54,10 +55,11 @@ public class ClassWithDenpendenciesTest extends TestCase {
      * @throws Exception
      */
     public void testDenpendency2PrintMessage() throws Exception {
+        int type = 2;
         //当被mock的对象某个方法被调用时，指定返回值
         when(denpendency2.returnMessage()).thenReturn("denpendency2 return message");
         String expectedMessge = "modify the message which is returned by denpendency2,denpendency2 return message";
-        String message = classWithDenpendencies.modifyDenpendency2ReturnMessage();
+        String message = classWithDenpendencies.returnMessage(type);
         //验证变量的方法是否被调用和调用次数
         verify(denpendency2,times(1)).returnMessage();
         verify(denpendency1,never()).returnMessage();
